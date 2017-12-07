@@ -48,8 +48,9 @@ while duplicate_found == false do
 	if (bank_history[id]) then
 		duplicate_found = true
 	else
-		bank_history[id] = true
+		bank_history[id] = count
 	end
 end
 
 print("Part 1: " .. count)
+print("Part 2: " .. (count - bank_history[id]))
