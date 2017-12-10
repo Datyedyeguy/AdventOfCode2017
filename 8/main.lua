@@ -36,6 +36,8 @@ end
 
 file:close();
 
+local running_max_value = -9999999
+
 for i=1, #instructions do
 	local eval = true
 	local instruction = instructions[i]
@@ -61,6 +63,10 @@ for i=1, #instructions do
 			registers[instruction.register] = registers[instruction.register] - instruction.amount
 		end
 	end
+
+	if running_max_value < registers[instruction.register] then
+		running_max_value = registers[instruction.register]
+	end
 end
 
 local max_value = -9999999
@@ -72,3 +78,4 @@ for key, value in pairs(registers) do
 end
 
 print("Part 1: " .. max_value)
+print("Part 2: " .. running_max_value)
