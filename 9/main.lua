@@ -6,6 +6,7 @@ groups = {}
 group_level = 0
 is_garbage = false
 skip = false
+garbage_count = 0
 
 for i=1, #data do
 	local input = data:sub(i, i)
@@ -27,6 +28,8 @@ for i=1, #data do
 		group_level = group_level - 1
 	elseif (input == "<" and not is_garbage) then
 		is_garbage = true
+	elseif (is_garbage) then
+		garbage_count = garbage_count + 1
 	end
 end
 
@@ -37,3 +40,4 @@ for i=1, #groups do
 end
 
 print("Part 1: " .. score)
+print("part 2: " .. garbage_count)
